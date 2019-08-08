@@ -7,7 +7,7 @@ const defaultOptions = {
   output_filename_only: false,
 };
 /**
- * This configuration hash cannot be overriden, as the values here are required
+ * This configuration hash cannot be overridden, as the values here are required
  * for the integration to work properly.
  */
 const enforcedConfig = {

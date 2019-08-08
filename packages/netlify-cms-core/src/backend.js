@@ -397,7 +397,7 @@ export class Backend {
     const entries = await Promise.all(collectionEntriesRequests).then(arrs => flatten(arrs));
 
     if (errors.length > 0) {
-      throw new Error({ message: 'Errors ocurred while searching entries locally!', errors });
+      throw new Error({ message: 'Errors occurred while searching entries locally!', errors });
     }
     const hits = entries
       .filter(({ score }) => score > 5)

@@ -18,7 +18,7 @@ Deploy preview links will work without configuration when all of the following r
 - Netlify CMS version is 2.4.0+
 - Using the GitHub backend (or Git Gateway with a GitHub repository)
 - Using editorial workflow
-- Have a continous deployment platform that builds every commit and provides statuses to your repo
+- Have a continuous deployment platform that builds every commit and provides statuses to your repo
 
 Any site created using one of the Deploy to Netlify options on our [starters
 page](../start-with-a-template) will automatically meet these criteria (barring any changes made to

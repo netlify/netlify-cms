@@ -9,7 +9,7 @@ const USER_AGENT = 'NetlifyCMS-Uploadcare-MediaLibrary';
 const CDN_BASE_URL = 'https://ucarecdn.com';
 
 /**
- * Default Uploadcare widget configuration, can be overriden via config.yml.
+ * Default Uploadcare widget configuration, can be overridden via config.yml.
  */
 const defaultConfig = {
   previewStep: true,

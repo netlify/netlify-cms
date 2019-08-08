@@ -216,7 +216,7 @@ Commit type   | When is it triggered?        | Available template tags
 --------------|------------------------------|-----------------------------
 `create`      | A new entry is created       | `slug`, `path`, `collection`
 `update`      | An existing entry is changed | `slug`, `path`, `collection`
-`delete`      | An exising entry is deleted  | `slug`, `path`, `collection`
+`delete`      | An existing entry is deleted | `slug`, `path`, `collection`
 `uploadMedia` | A media file is uploaded     | `path`
 `deleteMedia` | A media file is deleted      | `path`
 

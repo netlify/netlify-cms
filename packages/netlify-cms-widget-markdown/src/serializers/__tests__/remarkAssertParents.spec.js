@@ -82,7 +82,7 @@ describe('remarkAssertParents', () => {
     expect(transform(input)).toEqual(output);
   });
 
-  it('should handle assymetrical splits', () => {
+  it('should handle asymmetrical splits', () => {
     const input = u('root', [
       u('paragraph', [u('heading', { depth: 1 }, [u('text', 'Heading text.')])]),
     ]);
