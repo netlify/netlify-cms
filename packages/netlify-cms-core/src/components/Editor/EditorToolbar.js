@@ -101,7 +101,6 @@ const ToolbarSectionMain = styled.div`
   ${styles.toolbarSection};
   flex: 10;
   display: flex;
-  justify-content: space-between;
   padding: 0 10px;
 `;
 
