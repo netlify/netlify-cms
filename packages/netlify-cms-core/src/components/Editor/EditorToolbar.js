@@ -104,15 +104,6 @@ const ToolbarSectionMain = styled.div`
   padding: 0 10px;
 `;
 
-const ToolbarSubSectionFirst = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ToolbarSubSectionLast = styled(ToolbarSubSectionFirst)`
-  justify-content: flex-end;
-`;
-
 const ToolbarSectionBackLink = styled(Link)`
   ${styles.toolbarSection};
   border-right-width: 1px;
@@ -556,13 +547,21 @@ export class EditorToolbar extends React.Component {
     return this.renderNewEntrySimplePublishControls({ canCreate });
   };
 
-  renderWorkflowSaveControls = () => {
+  renderSaveButton = () => {
+    const { onPersist, hasChanged, isPersisting, t } = this.props;
+
+    return (
+      <SaveButton key="save-button" onClick={() => hasChanged && onPersist()}>
+        {isPersisting ? t('editor.editorToolbar.saving') : t('editor.editorToolbar.save')}
+      </SaveButton>
+    );
+  };
+
+  renderDeleteButton = () => {
     const {
-      onPersist,
       onDelete,
       onDeleteUnpublishedChanges,
       showDelete,
-      hasChanged,
       hasUnpublishedChanges,
       useOpenAuthoring,
       isPersisting,
@@ -582,10 +581,7 @@ export class EditorToolbar extends React.Component {
       (!hasUnpublishedChanges && !isModification && t('editor.editorToolbar.deletePublishedEntry'));
 
     return [
-      <SaveButton key="save-button" onClick={() => hasChanged && onPersist()}>
-        {isPersisting ? t('editor.editorToolbar.saving') : t('editor.editorToolbar.save')}
-      </SaveButton>,
-      (!showDelete || useOpenAuthoring) && !hasUnpublishedChanges && !isModification ? null : (
+      !showDelete && !hasUnpublishedChanges && !isModification ? null : (
         <DeleteButton
           key="delete-button"
           onClick={hasUnpublishedChanges ? onDeleteUnpublishedChanges : onDelete}
@@ -656,14 +652,13 @@ export class EditorToolbar extends React.Component {
           </div>
         </ToolbarSectionBackLink>
         <ToolbarSectionMain>
-          <ToolbarSubSectionFirst>
-            {hasWorkflow ? this.renderWorkflowSaveControls() : this.renderSimpleSaveControls()}
-          </ToolbarSubSectionFirst>
-          <ToolbarSubSectionLast>
             {hasWorkflow
-              ? this.renderWorkflowPublishControls()
-              : this.renderSimplePublishControls()}
-          </ToolbarSubSectionLast>
+              ? [
+                  this.renderSaveButton(),
+                  this.renderWorkflowPublishControls(),
+                  this.renderDeleteButton(),
+                ]
+              : [this.renderSimpleSaveControls(), this.renderSimplePublishControls()]}
         </ToolbarSectionMain>
         <ToolbarSectionMeta>
           <SettingsDropdown
