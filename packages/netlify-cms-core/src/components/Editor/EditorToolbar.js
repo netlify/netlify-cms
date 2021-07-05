@@ -652,13 +652,13 @@ export class EditorToolbar extends React.Component {
           </div>
         </ToolbarSectionBackLink>
         <ToolbarSectionMain>
-            {hasWorkflow
-              ? [
-                  this.renderSaveButton(),
-                  this.renderWorkflowPublishControls(),
-                  this.renderDeleteButton(),
-                ]
-              : [this.renderSimpleSaveControls(), this.renderSimplePublishControls()]}
+          {hasWorkflow
+            ? [
+                this.renderSaveButton(),
+                this.renderWorkflowPublishControls(),
+                this.renderDeleteButton(),
+              ]
+            : [this.renderSimpleSaveControls(), this.renderSimplePublishControls()]}
         </ToolbarSectionMain>
         <ToolbarSectionMeta>
           <SettingsDropdown
