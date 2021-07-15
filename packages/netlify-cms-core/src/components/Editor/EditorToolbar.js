@@ -101,7 +101,17 @@ const ToolbarSectionMain = styled.div`
   ${styles.toolbarSection};
   flex: 10;
   display: flex;
+  justify-content: space-between;
   padding: 0 10px;
+`;
+
+const ToolbarSubSectionFirst = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ToolbarSubSectionLast = styled(ToolbarSubSectionFirst)`
+  justify-content: flex-end;
 `;
 
 const ToolbarSectionBackLink = styled(Link)`
@@ -612,10 +622,7 @@ export class EditorToolbar extends React.Component {
      */
     if (!isNewEntry) {
       return (
-        <>
-          {this.renderDeployPreviewControls(t('editor.editorToolbar.deployButtonLabel'))}
-          {this.renderExistingEntryWorkflowPublishControls({ canCreate, canPublish, canDelete })}
-        </>
+        <>{this.renderExistingEntryWorkflowPublishControls({ canCreate, canPublish, canDelete })}</>
       );
     }
   };
@@ -650,13 +657,19 @@ export class EditorToolbar extends React.Component {
           </div>
         </ToolbarSectionBackLink>
         <ToolbarSectionMain>
-          {hasWorkflow
-            ? [
-                this.renderSaveButton(),
-                this.renderWorkflowPublishControls(),
-                this.renderDeleteButton(),
-              ]
-            : [this.renderSimpleSaveControls(), this.renderSimplePublishControls()]}
+          <ToolbarSubSectionFirst>
+            {hasWorkflow
+              ? [
+                  this.renderSaveButton(),
+                  this.renderWorkflowPublishControls(),
+                  this.renderDeleteButton(),
+                ]
+              : [this.renderSimpleSaveControls(), this.renderSimplePublishControls()]}
+          </ToolbarSubSectionFirst>
+          <ToolbarSubSectionLast>
+            {hasWorkflow &&
+              this.renderDeployPreviewControls(t('editor.editorToolbar.deployButtonLabel'))}
+          </ToolbarSubSectionLast>
         </ToolbarSectionMain>
         <ToolbarSectionMeta>
           <SettingsDropdown
