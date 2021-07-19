@@ -128,9 +128,10 @@ export function remarkToMarkdown(obj) {
   };
 
   const processor = unified()
+    .use({ settings: remarkToMarkdownPluginOpts })
     .use(remarkEscapeMarkdownEntities)
     .use(remarkStripTrailingBreaks)
-    .use(remarkToMarkdownPlugin, remarkToMarkdownPluginOpts)
+    .use(remarkToMarkdownPlugin)
     .use(remarkAllowAllText)
     .use(createRemarkShortcodeStringifier({ plugins: getEditorComponents() }))
     .use(registry.getRemarkPlugins());

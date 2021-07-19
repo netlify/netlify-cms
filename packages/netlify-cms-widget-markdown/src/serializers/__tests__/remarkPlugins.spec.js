@@ -4,6 +4,10 @@ import visit from 'unist-util-visit';
 import { markdownToRemark, remarkToMarkdown } from '..';
 
 describe('remark plugins', () => {
+  afterEach(() => {
+    registry._clearRemarkPlugins();
+  });
+
   function withNetlifyLinks() {
     return transformer;
     function transformer(tree) {
@@ -23,12 +27,25 @@ describe('remark plugins', () => {
           children: [
             {
               type: 'text',
-              value: 'Some text with ',
+              value: 'Some ',
+            },
+            {
+              type: 'emphasis',
+              children: [
+                {
+                  type: 'text',
+                  value: 'important',
+                },
+              ],
+            },
+            {
+              type: 'text',
+              value: ' text with ',
             },
             {
               type: 'link',
               title: null,
-              url: 'https://example.com',
+              url: 'https://netlify.com',
               children: [
                 {
                   type: 'text',
@@ -44,7 +61,9 @@ describe('remark plugins', () => {
         },
       ],
     });
-    expect(result).toMatchInlineSnapshot(`"Some text with [a link](https://netlify.com) in it."`);
+    expect(result).toMatchInlineSnapshot(
+      `"Some *important* text with [a link](https://netlify.com) in it."`,
+    );
   });
 
   it('should use remark transformer plugins from registry when converting markdown to mdast', () => {
@@ -160,6 +179,113 @@ Object {
   },
   "type": "root",
 }
+`);
+  });
+
+  it('should use remark serializer plugins from registry when converting mdast to markdown', () => {
+    function withEscapedLessThanChar() {
+      this.Compiler.prototype.visitors.text = node => {
+        return node.value.replace(/</g, '&lt;');
+      };
+    }
+
+    registry.registerRemarkPlugin(withEscapedLessThanChar);
+    const result = remarkToMarkdown({
+      type: 'root',
+      children: [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              type: 'text',
+              value: '<3 Netlify',
+            },
+          ],
+        },
+      ],
+    });
+    expect(result).toMatchInlineSnapshot(`"&lt;3 Netlify"`);
+  });
+
+  it('should use remark preset with settings from registry when converting mdast to markdown', () => {
+    const settings = {
+      emphasis: '_',
+      bullet: '-',
+    };
+
+    registry.registerRemarkPlugin({ settings });
+    const result = remarkToMarkdown({
+      type: 'root',
+      children: [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              type: 'text',
+              value: 'Some ',
+            },
+            {
+              type: 'emphasis',
+              children: [
+                {
+                  type: 'text',
+                  value: 'important',
+                },
+              ],
+            },
+            {
+              type: 'text',
+              value: ' points:',
+            },
+          ],
+        },
+        {
+          type: 'list',
+          ordered: false,
+          start: null,
+          spread: false,
+          children: [
+            {
+              type: 'listItem',
+              spread: false,
+              checked: null,
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      value: 'One',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'listItem',
+              spread: false,
+              checked: null,
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      value: 'Two',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+    expect(result).toMatchInlineSnapshot(`
+"Some _important_ points:
+
+- One
+- Two"
 `);
   });
 });
