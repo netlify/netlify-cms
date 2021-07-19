@@ -26,6 +26,7 @@ const registry = {
   previewStyles: [],
   widgets: {},
   editorComponents: Map(),
+  remarkPlugins: [],
   widgetValueSerializers: {},
   mediaLibraries: [],
   locales: {},
@@ -43,6 +44,8 @@ export default {
   resolveWidget,
   registerEditorComponent,
   getEditorComponents,
+  registerRemarkPlugin,
+  getRemarkPlugins,
   registerWidgetValueSerializer,
   getWidgetValueSerializer,
   registerBackend,
@@ -161,6 +164,19 @@ export function registerEditorComponent(component) {
 }
 export function getEditorComponents() {
   return registry.editorComponents;
+}
+
+/**
+ * Remark plugins
+ */
+/** @typedef {import('unified').Pluggable} RemarkPlugin */
+/** @type {(plugin: RemarkPlugin) => void} */
+export function registerRemarkPlugin(plugin) {
+  registry.remarkPlugins.push(plugin);
+}
+/** @type {() => Array<RemarkPlugin>} */
+export function getRemarkPlugins() {
+  return registry.remarkPlugins;
 }
 
 /**

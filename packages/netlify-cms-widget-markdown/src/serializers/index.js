@@ -7,6 +7,7 @@ import remarkToRehype from 'remark-rehype';
 import rehypeToHtml from 'rehype-stringify';
 import htmlToRehype from 'rehype-parse';
 import rehypeToRemark from 'rehype-remark';
+import registry from 'netlify-cms-core';
 
 import remarkToRehypeShortcodes from './remarkRehypeShortcodes';
 import rehypePaperEmoji from './rehypePaperEmoji';
@@ -73,7 +74,10 @@ export function markdownToRemark(markdown) {
   /**
    * Further transform the MDAST with plugins.
    */
-  const result = unified().use(remarkSquashReferences).runSync(parsed);
+  const result = unified()
+    .use(remarkSquashReferences)
+    .use(registry.getRemarkPlugins())
+    .runSync(parsed);
 
   return result;
 }
@@ -129,6 +133,7 @@ export function remarkToMarkdown(obj) {
   const processedMdast = unified()
     .use(remarkEscapeMarkdownEntities)
     .use(remarkStripTrailingBreaks)
+    .use(registry.getRemarkPlugins())
     .runSync(mdast);
 
   const markdown = unified()
