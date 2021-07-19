@@ -1,6 +1,7 @@
 module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setupTestFramework.js'],
   moduleNameMapper: {
+    'netlify-cms-core/src/backend': '<rootDir>/packages/netlify-cms-core/src/backend',
     'netlify-cms-core': '<rootDir>/packages/netlify-cms-core/src/index.js',
     'netlify-cms-lib-auth': '<rootDir>/packages/netlify-cms-lib-auth/src/index.js',
     'netlify-cms-lib-util': '<rootDir>/packages/netlify-cms-lib-util/src/index.ts',
