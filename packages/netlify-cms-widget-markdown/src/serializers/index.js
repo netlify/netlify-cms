@@ -61,23 +61,23 @@ import { getEditorComponents } from '../MarkdownControl';
  * Deserialize a Markdown string to an MDAST.
  */
 export function markdownToRemark(markdown) {
-  /**
-   * Parse the Markdown string input to an MDAST.
-   */
-  const parsed = unified()
+  const processor = unified()
     .use(markdownToRemarkPlugin, { fences: true, commonmark: true })
     .use(markdownToRemarkRemoveTokenizers, { inlineTokenizers: ['url'] })
     .use(remarkParseShortcodes, { plugins: getEditorComponents() })
     .use(remarkAllowHtmlEntities)
-    .parse(markdown);
+    .use(remarkSquashReferences)
+    .use(registry.getRemarkPlugins());
+
+  /**
+   * Parse the Markdown string input to an MDAST.
+   */
+  const parsed = processor().parse(markdown);
 
   /**
    * Further transform the MDAST with plugins.
    */
-  const result = unified()
-    .use(remarkSquashReferences)
-    .use(registry.getRemarkPlugins())
-    .runSync(parsed);
+  const result = processor().runSync(parsed);
 
   return result;
 }
@@ -127,21 +127,23 @@ export function remarkToMarkdown(obj) {
     rule: '-',
   };
 
-  /**
-   * Transform the MDAST with plugins.
-   */
-  const processedMdast = unified()
+  const processor = unified()
     .use(remarkEscapeMarkdownEntities)
     .use(remarkStripTrailingBreaks)
-    .use(registry.getRemarkPlugins())
-    .runSync(mdast);
-
-  const markdown = unified()
     .use(remarkToMarkdownPlugin, remarkToMarkdownPluginOpts)
     .use(remarkAllowAllText)
     .use(createRemarkShortcodeStringifier({ plugins: getEditorComponents() }))
-    .stringify(processedMdast)
-    .replace(/\r?/g, '');
+    .use(registry.getRemarkPlugins());
+
+  /**
+   * Transform the MDAST with plugins.
+   */
+  const processedMdast = processor().runSync(mdast);
+
+  /**
+   * Serialize the MDAST to markdown.
+   */
+  const markdown = processor().stringify(processedMdast).replace(/\r?/g, '');
 
   /**
    * Return markdown with trailing whitespace removed.
