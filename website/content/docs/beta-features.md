@@ -3,13 +3,14 @@ group: Configuration
 weight: 200
 title: Beta Features!
 ---
-We run new functionality in an open beta format from time to time. That means that this functionality is totally available for use, and we *think* it might be ready for primetime, but it could break or change without notice.
+
+We run new functionality in an open beta format from time to time. That means that this functionality is totally available for use, and we _think_ it might be ready for primetime, but it could break or change without notice.
 
 **Use these features at your own risk.**
 
 ## Working with a Local Git Repository
 
-***added in netlify-cms@2.10.17 / netlify-cms-app@2.11.14***
+**_added in netlify-cms@2.10.17 / netlify-cms-app@2.11.14_**
 
 You can connect Netlify CMS to a local Git repository, instead of working with a live repo.
 
@@ -26,7 +27,8 @@ local_backend: true
 
 3. Run `npx netlify-cms-proxy-server` from the root directory of the above repository.
 
-   * If the default port (8081) is in use, the proxy server won't start and you will see an error message. In this case, follow [these steps](#configure-the-netlify-cms-proxy-server-port-number) before proceeding.
+   - If the default port (8081) is in use, the proxy server won't start and you will see an error message. In this case, follow [these steps](#configure-the-netlify-cms-proxy-server-port-number) before proceeding.
+
 4. Start your local development server (e.g. run `gatsby develop`).
 5. Open <http://localhost:8000/admin> to verify that your can administer your content locally.
 
@@ -55,7 +57,7 @@ local_backend:
 
 ## GitLab and BitBucket Editorial Workflow Support
 
-***added in netlify-cms@2.10.6 / netlify-cms-app@2.11.3***
+**_added in netlify-cms@2.10.6 / netlify-cms-app@2.11.3_**
 
 You can enable the Editorial Workflow with the following line in your Netlify CMS `config.yml` file:
 
@@ -212,7 +214,7 @@ Learn more about the benefits of GraphQL in the [GraphQL docs](https://graphql.o
 
 When using the [GitHub backend](/docs/github-backend), you can use Netlify CMS to accept contributions from GitHub users without giving them access to your repository. When they make changes in the CMS, the CMS forks your repository for them behind the scenes, and all the changes are made to the fork. When the contributor is ready to submit their changes, they can set their draft as ready for review in the CMS. This triggers a pull request to your repository, which you can merge using the GitHub UI.
 
-At the same time, any contributors who *do* have write access to the repository can continue to use Netlify CMS normally.
+At the same time, any contributors who _do_ have write access to the repository can continue to use Netlify CMS normally.
 
 More details and setup instructions can be found on [the Open Authoring docs page](/docs/open-authoring).
 
@@ -285,11 +287,11 @@ And for the image field being populated with a value of `image.png`.
 
 Supports all of the [`slug` templates](/docs/configuration-options#slug) and:
 
-* `{{dirname}}` The path to the file's parent directory, relative to the collection's `folder`.
-* `{{filename}}` The file name without the extension part.
-* `{{extension}}` The file extension.
-* `{{media_folder}}` The global `media_folder`.
-* `{{public_folder}}` The global `public_folder`.
+- `{{dirname}}` The path to the file's parent directory, relative to the collection's `folder`.
+- `{{filename}}` The file name without the extension part.
+- `{{extension}}` The file extension.
+- `{{media_folder}}` The global `media_folder`.
+- `{{public_folder}}` The global `public_folder`.
 
 ## List Widget: Variable Types
 
@@ -305,9 +307,9 @@ To use variable types in the list widget, update your field configuration as fol
 
 ### Additional list widget options
 
-* `types`: a nested list of object widgets. All widgets must be of type `object`. Every object widget may define different set of fields.
-* `typeKey`: the name of the field that will be added to every item in list representing the name of the object widget that item belongs to. Ignored if `types` is not defined. Default is `type`.
-* `summary`: allows customization of a collapsed list item object in a similar way to a [collection summary](/docs/configuration-options/?#summary)
+- `types`: a nested list of object widgets. All widgets must be of type `object`. Every object widget may define different set of fields.
+- `typeKey`: the name of the field that will be added to every item in list representing the name of the object widget that item belongs to. Ignored if `types` is not defined. Default is `type`.
+- `summary`: allows customization of a collapsed list item object in a similar way to a [collection summary](/docs/configuration-options/?#summary)
 
 ### Example Configuration
 
@@ -502,12 +504,12 @@ Netlify CMS generates the following commit types:
 
 Template tags produce the following output:
 
-* `{{slug}}`: the url-safe filename of the entry changed
-* `{{collection}}`: the name of the collection containing the entry changed
-* `{{path}}`: the full path to the file changed
-* `{{message}}`: the relevant message based on the current change (e.g. the `create` message when an entry is created)
-* `{{author-login}}`: the login/username of the author
-* `{{author-name}}`: the full name of the author (might be empty based on the user's profile)
+- `{{slug}}`: the url-safe filename of the entry changed
+- `{{collection}}`: the name of the collection containing the entry changed
+- `{{path}}`: the full path to the file changed
+- `{{message}}`: the relevant message based on the current change (e.g. the `create` message when an entry is created)
+- `{{author-login}}`: the login/username of the author
+- `{{author-name}}`: the full name of the author (might be empty based on the user's profile)
 
 ## Image widget file size limit
 
@@ -634,6 +636,7 @@ collections:
 ```
 
 Nested collections expect the following directory structure:
+
 ```bash
 content
 └── pages
@@ -647,3 +650,19 @@ content
         │   └── index.md
         └── index.md
 ```
+
+## Remark plugins
+
+You can register plugins to customize [`remark`](https://github.com/remarkjs/remark), the library used by the markdown widget for serializing and deserializing markdown.
+
+```js
+import { registerRemarkPlugin } from 'netlify-cms-core';
+
+// register a plugin
+registerRemarkPlugin(plugin);
+
+// provide global settings to all plugins, e.g. for customizing `remark-stringify`
+registerRemarkPlugin({ settings: { bullet: '-' } });
+```
+
+Note that `netlify-widget-markdown` currently uses `remark@10`, so you should check a plugin's compatibility first.

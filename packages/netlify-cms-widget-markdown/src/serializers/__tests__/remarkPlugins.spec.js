@@ -3,7 +3,7 @@ import visit from 'unist-util-visit';
 
 import { markdownToRemark, remarkToMarkdown } from '..';
 
-describe('remark plugins', () => {
+describe('registered remark plugins', () => {
   afterEach(() => {
     registry._clearRemarkPlugins();
   });
@@ -17,7 +17,7 @@ describe('remark plugins', () => {
     }
   }
 
-  it('should use remark transformer plugins from registry when converting mdast to markdown', () => {
+  it('should use remark transformer plugins when converting mdast to markdown', () => {
     registry.registerRemarkPlugin(withNetlifyLinks);
     const result = remarkToMarkdown({
       type: 'root',
@@ -66,7 +66,7 @@ describe('remark plugins', () => {
     );
   });
 
-  it('should use remark transformer plugins from registry when converting markdown to mdast', () => {
+  it('should use remark transformer plugins when converting markdown to mdast', () => {
     registry.registerRemarkPlugin(withNetlifyLinks);
     const result = markdownToRemark('Some text with [a link](https://example.com) in it.');
     expect(result).toMatchInlineSnapshot(`
@@ -182,7 +182,7 @@ Object {
 `);
   });
 
-  it('should use remark serializer plugins from registry when converting mdast to markdown', () => {
+  it('should use remark serializer plugins when converting mdast to markdown', () => {
     function withEscapedLessThanChar() {
       this.Compiler.prototype.visitors.text = node => {
         return node.value.replace(/</g, '&lt;');
@@ -207,7 +207,7 @@ Object {
     expect(result).toMatchInlineSnapshot(`"&lt;3 Netlify"`);
   });
 
-  it('should use remark preset with settings from registry when converting mdast to markdown', () => {
+  it('should use remark preset with settings when converting mdast to markdown', () => {
     const settings = {
       emphasis: '_',
       bullet: '-',
