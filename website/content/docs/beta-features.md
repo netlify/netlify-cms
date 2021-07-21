@@ -653,7 +653,7 @@ content
 
 ## Remark plugins
 
-You can register plugins to customize [`remark`](https://github.com/remarkjs/remark), the library used by the markdown widget for serializing and deserializing markdown.
+You can register plugins to customize [`remark`](https://github.com/remarkjs/remark), the library used by the richtext editor for serializing and deserializing markdown.
 
 ```js
 import { registerRemarkPlugin } from 'netlify-cms-core';
