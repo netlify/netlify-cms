@@ -128,9 +128,11 @@ export default class Editor extends React.Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (!this.state.value.equals(nextState.value)) return true;
+
     const raw = nextState.value.document.toJS();
     const markdown = slateToMarkdown(raw, { voidCodeBlock: this.codeBlockComponent });
-    return !this.state.value.equals(nextState.value) || nextProps.value !== markdown;
+    return nextProps.value !== markdown;
   }
 
   componentDidMount() {
