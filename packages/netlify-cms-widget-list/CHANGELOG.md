@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/netlify/netlify-cms/compare/netlify-cms-widget-list@2.9.3...netlify-cms-widget-list@2.10.0) (2021-07-14)
+
+
+### Features
+
+* **list:** Add heading for list widgets ([#5544](https://github.com/netlify/netlify-cms/issues/5544)) ([d60df87](https://github.com/netlify/netlify-cms/commit/d60df8786d7ea01af94c86a6e889654ce20e53ca))
+
+
+
+
+
 ## [2.9.3](https://github.com/netlify/netlify-cms/compare/netlify-cms-widget-list@2.9.2...netlify-cms-widget-list@2.9.3) (2021-07-07)
 
 

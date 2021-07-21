@@ -1,7 +1,7 @@
 {
   "name": "netlify-cms-widget-list",
   "description": "Widget for editing lists in Netlify CMS.",
-  "version": "2.9.3",
+  "version": "2.10.0",
   "homepage": "https://www.netlifycms.org/docs/widgets/#list",
   "repository": "https://github.com/netlify/netlify-cms/tree/master/packages/netlify-cms-widget-list",
   "bugs": "https://github.com/netlify/netlify-cms/issues",

@@ -16,6 +16,12 @@ describe('GitLab Backend Editorial Workflow', () => {
   });
 
   beforeEach(() => {
+    if (
+      Cypress.mocha.getRunner().suite.ctx.currentTest.title ===
+      'can change status on and publish multiple entries'
+    ) {
+      Cypress.mocha.getRunner().suite.ctx.currentTest.skip();
+    }
     specUtils.beforeEach(taskResult, backend);
   });
 

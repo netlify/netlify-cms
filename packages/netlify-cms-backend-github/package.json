@@ -1,7 +1,7 @@
 {
   "name": "netlify-cms-backend-github",
   "description": "GitHub backend for Netlify CMS",
-  "version": "2.13.3",
+  "version": "2.13.4",
   "license": "MIT",
   "repository": "https://github.com/netlify/netlify-cms/tree/master/packages/netlify-cms-backend-github",
   "bugs": "https://github.com/netlify/netlify-cms/issues",

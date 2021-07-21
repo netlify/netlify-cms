@@ -449,7 +449,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -475,7 +475,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name ~ \"cms/\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name ~ \"cms/\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -716,7 +716,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -874,7 +874,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -900,7 +900,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -952,7 +952,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1188,7 +1188,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1240,7 +1240,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1318,7 +1318,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1477,7 +1477,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1529,7 +1529,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1607,7 +1607,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1685,7 +1685,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1789,7 +1789,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",
@@ -1815,7 +1815,7 @@
   },
   {
     "method": "GET",
-    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\"  AND state = \"OPEN\"  AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
+    "url": "/2.0/repositories/owner/repo/pullrequests?pagelen=50&q=source.repository.full_name = \"owner/repo\" AND state = \"OPEN\" AND destination.branch.name = \"master\" AND comment_count > 0 AND source.branch.name = \"cms/posts/1970-01-01-first-title\"",
     "headers": {
       "Server": "nginx",
       "Vary": "Authorization",

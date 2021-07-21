@@ -66,6 +66,7 @@ type GraphQLPullRequest = {
   state: string;
   title: string;
   mergedAt: string | null;
+  updatedAt: string | null;
   labels: { nodes: { name: string }[] };
   repository: {
     id: string;

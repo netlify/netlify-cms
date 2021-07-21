@@ -50,6 +50,7 @@ export const pullRequest = gql`
     state
     title
     merged_at: mergedAt
+    updated_at: updatedAt
     repository {
       ...RepositoryParts
     }

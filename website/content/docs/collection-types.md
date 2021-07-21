@@ -78,6 +78,10 @@ collections:
       - {label: "Contenido", name: "body", widget: "markdown"}
 ```
 
+### Nested collections (beta)
+
+[Nested collections](/docs/beta-features/#nested-collections) is a beta feature that allows a folder collection to show a nested structure of entries and edit the locations of the entries. This feature is useful when you have a complex folder structure and may not want to create separate collections for every directory. As it is in beta, please use with discretion.
+
 ## File collections
 
 A `files` collection contains one or more uniquely configured files. Unlike items in `folder` collections, which repeat the same configuration over all files in the folder, each item in a `files` collection has an explicitly set path, filename, and configuration. This can be useful for unique files with a custom set of fields, like a settings file or a custom landing page with a unique content structure.

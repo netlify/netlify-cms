@@ -1,7 +1,7 @@
 {
   "name": "netlify-cms",
   "description": "An extensible, open source, Git-based, React CMS for static sites.",
-  "version": "2.10.146",
+  "version": "2.10.148",
   "homepage": "https://www.netlifycms.org",
   "repository": "https://github.com/netlify/netlify-cms",
   "bugs": "https://github.com/netlify/netlify-cms/issues",
@@ -23,7 +23,7 @@
   "dependencies": {
     "codemirror": "^5.46.0",
     "create-react-class": "^15.7.0",
-    "netlify-cms-app": "^2.15.26",
+    "netlify-cms-app": "^2.15.28",
     "netlify-cms-media-library-cloudinary": "^1.3.10",
     "netlify-cms-media-library-uploadcare": "^0.5.10",
     "react": "^16.8.4",
