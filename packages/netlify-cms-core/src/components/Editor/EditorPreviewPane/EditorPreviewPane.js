@@ -7,7 +7,7 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { lengths } from 'netlify-cms-ui-default';
 import { connect } from 'react-redux';
 
-import registry, {
+import {
   resolveWidget,
   getPreviewTemplate,
   getPreviewStyles,
