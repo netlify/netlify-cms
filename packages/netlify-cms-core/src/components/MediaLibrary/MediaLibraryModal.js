@@ -92,6 +92,7 @@ function MediaLibraryModal({
   loadDisplayURL,
   displayURLs,
   t,
+  mediaFolder,
 }) {
   const filteredFiles = forImage ? handleFilter(files) : files;
   const queriedFiles = !dynamicSearch && query ? handleQuery(query, filteredFiles) : filteredFiles;
@@ -130,6 +131,7 @@ function MediaLibraryModal({
         isPersisting={isPersisting}
         isDeleting={isDeleting}
         selectedFile={selectedFile}
+        mediaFolder={mediaFolder}
       />
       {!shouldShowEmptyMessage ? null : (
         <EmptyMessage content={emptyMessage} isPrivate={privateUpload} />
@@ -195,6 +197,7 @@ MediaLibraryModal.propTypes = {
   loadDisplayURL: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   displayURLs: PropTypes.instanceOf(Map).isRequired,
+  mediaFolder: PropTypes.string,
 };
 
 export default translate()(MediaLibraryModal);

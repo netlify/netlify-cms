@@ -45,6 +45,7 @@ function MediaLibraryTop({
   isPersisting,
   isDeleting,
   selectedFile,
+  mediaFolder,
 }) {
   const shouldShowButtonLoader = isPersisting || isDeleting;
   const uploadEnabled = !shouldShowButtonLoader;
@@ -78,6 +79,7 @@ function MediaLibraryTop({
             name={selectedFile.name}
             draft={selectedFile.draft}
             t={t}
+            mediaFolder={mediaFolder}
           />
           <DownloadButton onClick={onDownload} disabled={!hasSelection}>
             {downloadButtonLabel}
@@ -138,6 +140,7 @@ MediaLibraryTop.propTypes = {
     }),
     PropTypes.shape({}),
   ]),
+  mediaFolder: PropTypes.string,
 };
 
 export default MediaLibraryTop;

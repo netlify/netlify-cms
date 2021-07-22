@@ -316,6 +316,7 @@ class MediaLibrary extends React.Component {
       privateUpload,
       displayURLs,
       t,
+      mediaFolder,
     } = this.props;
 
     return (
@@ -350,6 +351,7 @@ class MediaLibrary extends React.Component {
         displayURLs={displayURLs}
         loadDisplayURL={this.loadDisplayURL}
         t={t}
+        mediaFolder={mediaFolder}
       />
     );
   }
@@ -357,6 +359,7 @@ class MediaLibrary extends React.Component {
 
 function mapStateToProps(state) {
   const { mediaLibrary } = state;
+  const mediaFolder = state.config.media_folder;
   const field = mediaLibrary.get('field');
   const mediaLibraryProps = {
     isVisible: mediaLibrary.get('isVisible'),
@@ -376,6 +379,7 @@ function mapStateToProps(state) {
     hasNextPage: mediaLibrary.get('hasNextPage'),
     isPaginating: mediaLibrary.get('isPaginating'),
     field,
+    mediaFolder,
   };
   return { ...mediaLibraryProps };
 }
