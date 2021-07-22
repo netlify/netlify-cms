@@ -656,13 +656,11 @@ content
 You can register plugins to customize [`remark`](https://github.com/remarkjs/remark), the library used by the richtext editor for serializing and deserializing markdown.
 
 ```js
-import { registerRemarkPlugin } from 'netlify-cms-core';
-
 // register a plugin
-registerRemarkPlugin(plugin);
+CMS.registerRemarkPlugin(plugin);
 
 // provide global settings to all plugins, e.g. for customizing `remark-stringify`
-registerRemarkPlugin({ settings: { bullet: '-' } });
+CMS.registerRemarkPlugin({ settings: { bullet: '-' } });
 ```
 
 Note that `netlify-widget-markdown` currently uses `remark@10`, so you should check a plugin's compatibility first.
