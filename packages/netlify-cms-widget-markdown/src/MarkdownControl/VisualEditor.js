@@ -110,6 +110,7 @@ export default class Editor extends React.Component {
       getAsset: props.getAsset,
       resolveWidget: props.resolveWidget,
       t: props.t,
+      remarkPlugins: this.remarkPlugins,
     });
     this.state = {
       value: createSlateValue(
