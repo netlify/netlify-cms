@@ -2,6 +2,7 @@
 declare module 'netlify-cms-core' {
   import type { ComponentType } from 'react';
   import type { List, Map } from 'immutable';
+  import type { Pluggable } from 'unified';
 
   export type CmsBackendType =
     | 'azure'
@@ -543,6 +544,7 @@ declare module 'netlify-cms-core' {
   export interface CMS {
     getBackend: (name: string) => CmsRegistryBackend | undefined;
     getEditorComponents: () => Map<string, ComponentType<any>>;
+    getRemarkPlugins: () => Array<Pluggable>;
     getLocale: (locale: string) => CmsLocalePhrases | undefined;
     getMediaLibrary: (name: string) => CmsMediaLibrary | undefined;
     getPreviewStyles: () => PreviewStyle[];
@@ -552,6 +554,7 @@ declare module 'netlify-cms-core' {
     init: (options?: InitOptions) => void;
     registerBackend: (name: string, backendClass: CmsBackendClass) => void;
     registerEditorComponent: (options: EditorComponentOptions) => void;
+    registerRemarkPlugin: (plugin: Pluggable) => void;
     registerEventListener: (
       eventListener: CmsEventListener,
       options?: CmsEventListenerOptions,

@@ -15,7 +15,7 @@ import Shortcode from './Shortcode';
 import { SLATE_DEFAULT_BLOCK_TYPE as defaultType } from '../../types';
 import Hotkey, { HOT_KEY_MAP } from './Hotkey';
 
-function plugins({ getAsset, resolveWidget, t }) {
+function plugins({ getAsset, resolveWidget, t, remarkPlugins }) {
   return [
     {
       onKeyDown(event, editor, next) {
@@ -51,7 +51,7 @@ function plugins({ getAsset, resolveWidget, t }) {
     CloseBlock({ defaultType }),
     SelectAll(),
     ForceInsert({ defaultType }),
-    CopyPasteVisual({ getAsset, resolveWidget }),
+    CopyPasteVisual({ getAsset, resolveWidget, remarkPlugins }),
     Shortcode({ defaultType }),
   ];
 }

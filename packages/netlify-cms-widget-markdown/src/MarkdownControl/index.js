@@ -76,6 +76,7 @@ export default class MarkdownControl extends React.Component {
       classNameWrapper,
       field,
       getEditorComponents,
+      getRemarkPlugins,
       resolveWidget,
       t,
       isDisabled,
@@ -95,6 +96,7 @@ export default class MarkdownControl extends React.Component {
           value={value}
           field={field}
           getEditorComponents={getEditorComponents}
+          getRemarkPlugins={getRemarkPlugins}
           resolveWidget={resolveWidget}
           pendingFocus={pendingFocus && this.setFocusReceived}
           t={t}

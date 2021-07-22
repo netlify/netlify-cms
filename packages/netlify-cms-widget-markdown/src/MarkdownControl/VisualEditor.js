@@ -45,8 +45,8 @@ function createEmptyRawDoc() {
   return { nodes: [emptyBlock] };
 }
 
-function createSlateValue(rawValue, { voidCodeBlock }) {
-  const rawDoc = rawValue && markdownToSlate(rawValue, { voidCodeBlock });
+function createSlateValue(rawValue, { voidCodeBlock }, remarkPlugins) {
+  const rawDoc = rawValue && markdownToSlate(rawValue, { voidCodeBlock }, remarkPlugins);
   const rawDocHasNodes = !isEmpty(get(rawDoc, 'nodes'));
   const document = Document.fromJSON(rawDocHasNodes ? rawDoc : createEmptyRawDoc());
   return Value.create({ document });
@@ -95,6 +95,8 @@ export default class Editor extends React.Component {
         ? editorComponents
         : editorComponents.set('code-block', { label: 'Code Block', type: 'code-block' });
 
+    this.remarkPlugins = props.getRemarkPlugins();
+
     mergeMediaConfig(this.editorComponents, this.props.field);
     this.renderBlock = renderBlock({
       classNameWrapper: props.className,
@@ -108,9 +110,14 @@ export default class Editor extends React.Component {
       getAsset: props.getAsset,
       resolveWidget: props.resolveWidget,
       t: props.t,
+      remarkPlugins: this.remarkPlugins,
     });
     this.state = {
-      value: createSlateValue(this.props.value, { voidCodeBlock: !!this.codeBlockComponent }),
+      value: createSlateValue(
+        this.props.value,
+        { voidCodeBlock: !!this.codeBlockComponent },
+        this.remarkPlugins,
+      ),
     };
   }
 
@@ -123,14 +130,21 @@ export default class Editor extends React.Component {
     value: PropTypes.string,
     field: ImmutablePropTypes.map.isRequired,
     getEditorComponents: PropTypes.func.isRequired,
+    getRemarkPlugins: PropTypes.func.isRequired,
     isShowModeToggle: PropTypes.bool.isRequired,
     t: PropTypes.func.isRequired,
   };
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (!this.state.value.equals(nextState.value)) return true;
+
     const raw = nextState.value.document.toJS();
-    const markdown = slateToMarkdown(raw, { voidCodeBlock: this.codeBlockComponent });
-    return !this.state.value.equals(nextState.value) || nextProps.value !== markdown;
+    const markdown = slateToMarkdown(
+      raw,
+      { voidCodeBlock: this.codeBlockComponent },
+      this.remarkPlugins,
+    );
+    return nextProps.value !== markdown;
   }
 
   componentDidMount() {
@@ -143,7 +157,11 @@ export default class Editor extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.value !== this.props.value) {
       this.setState({
-        value: createSlateValue(this.props.value, { voidCodeBlock: !!this.codeBlockComponent }),
+        value: createSlateValue(
+          this.props.value,
+          { voidCodeBlock: !!this.codeBlockComponent },
+          this.remarkPlugins,
+        ),
       });
     }
   }
@@ -183,7 +201,11 @@ export default class Editor extends React.Component {
   handleDocumentChange = debounce(editor => {
     const { onChange } = this.props;
     const raw = editor.value.document.toJS();
-    const markdown = slateToMarkdown(raw, { voidCodeBlock: this.codeBlockComponent });
+    const markdown = slateToMarkdown(
+      raw,
+      { voidCodeBlock: this.codeBlockComponent },
+      this.remarkPlugins,
+    );
     onChange(markdown);
   }, 150);
 
