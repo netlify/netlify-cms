@@ -15,6 +15,8 @@ import {
 import { ScrollSync, ScrollSyncPane } from 'react-scroll-sync';
 
 import EditorControlPane from './EditorControlPane/EditorControlPane';
+import RightControlPane from './RightControlPane/RightControlPane';
+import EditorNotesPane from './EditorNotesPane/EditorNotesPane';
 import EditorPreviewPane from './EditorPreviewPane/EditorPreviewPane';
 import EditorToolbar from './EditorToolbar';
 import { hasI18n, getI18nInfo, getPreviewEntry } from '../../lib/i18n';
@@ -273,6 +275,32 @@ class EditorInterface extends Component {
       ? getPreviewEntry(entry, leftPanelLocale, defaultLocale)
       : entry;
 
+    const tabElements = [
+      {
+        key: 'preview',
+        title: 'Preview',
+        content: (
+          <EditorPreviewPane
+            collection={collection}
+            entry={previewEntry}
+            fields={fields}
+            fieldsMetaData={fieldsMetaData}
+          />
+        ),
+      },
+      {
+        key: 'notes',
+        title: 'Notes',
+        content: <EditorNotesPane draftKey={draftKey} hasWorkflow={hasWorkflow} />,
+      },
+    ];
+
+    const previewPane = (
+      <PreviewPaneContainer blockEntry={showEventBlocker}>
+        <RightControlPane tabs={tabElements} />
+      </PreviewPaneContainer>
+    );
+
     const editorWithPreview = (
       <ScrollSync enabled={this.state.scrollSyncEnabled}>
         <div>
@@ -285,14 +313,15 @@ class EditorInterface extends Component {
             onDragFinished={this.handleSplitPaneDragFinished}
           >
             <ScrollSyncPane>{editor}</ScrollSyncPane>
-            <PreviewPaneContainer blockEntry={showEventBlocker}>
+            {previewPane}
+            {/* <PreviewPaneContainer blockEntry={showEventBlocker}>
               <EditorPreviewPane
                 collection={collection}
                 entry={previewEntry}
                 fields={fields}
                 fieldsMetaData={fieldsMetaData}
               />
-            </PreviewPaneContainer>
+            </PreviewPaneContainer> */}
           </StyledSplitPane>
         </div>
       </ScrollSync>
