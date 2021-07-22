@@ -9,8 +9,7 @@ describe('registered remark plugins', () => {
   });
 
   function withNetlifyLinks() {
-    return transformer;
-    function transformer(tree) {
+    return function transformer(tree) {
       visit(tree, 'link', function onLink(node) {
         node.url = 'https://netlify.com';
       });
