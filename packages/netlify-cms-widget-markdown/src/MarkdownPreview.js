@@ -17,7 +17,7 @@ class MarkdownPreview extends React.Component {
       return null;
     }
 
-    const html = markdownToHtml(value, { getAsset, resolveWidget }, getRemarkPlugins());
+    const html = markdownToHtml(value, { getAsset, resolveWidget }, getRemarkPlugins?.());
     const toRender = field?.get('sanitize_preview', false) ? DOMPurify.sanitize(html) : html;
 
     return <WidgetPreviewContainer dangerouslySetInnerHTML={{ __html: toRender }} />;
