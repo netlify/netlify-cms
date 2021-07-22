@@ -10,17 +10,19 @@ export function remarkParseShortcodes({ plugins }) {
 
 function createShortcodeTokenizer({ plugins }) {
   return function tokenizeShortcode(eat, value, silent) {
-    let match;
-    const potentialMatchValue = value.split('\n\n')[0].trimEnd();
-    const plugin = plugins.find(plugin => {
-      match = value.match(plugin.pattern);
-
-      if (!match) {
-        match = potentialMatchValue.match(plugin.pattern);
-      }
-
-      return !!match;
-    });
+    // Attempt to find a regex match for each plugin's pattern, and then
+    // select the first by its occurence in `value`. This ensures we won't
+    // skip a plugin that occurs later in the plugin registry, but earlier
+    // in the `value`.
+    const { plugin, match } =
+      plugins
+        .toList()
+        .map(plugin => ({
+          match: value.match(plugin.pattern),
+          plugin,
+        }))
+        .filter(({ match }) => !!match)
+        .reduce((a, b) => (a.match.index < b.match.index ? a : b)) ?? {};
 
     if (match) {
       if (silent) {
