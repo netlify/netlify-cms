@@ -46,7 +46,6 @@ export default {
   getEditorComponents,
   registerRemarkPlugin,
   getRemarkPlugins,
-  _clearRemarkPlugins,
   registerWidgetValueSerializer,
   getWidgetValueSerializer,
   registerBackend,
@@ -178,10 +177,6 @@ export function registerRemarkPlugin(plugin) {
 /** @type {() => Array<RemarkPlugin>} */
 export function getRemarkPlugins() {
   return registry.remarkPlugins;
-}
-/** @private */
-export function _clearRemarkPlugins() {
-  registry.remarkPlugins = [];
 }
 
 /**

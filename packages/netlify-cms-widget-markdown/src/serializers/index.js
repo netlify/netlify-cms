@@ -7,7 +7,6 @@ import remarkToRehype from 'remark-rehype';
 import rehypeToHtml from 'rehype-stringify';
 import htmlToRehype from 'rehype-parse';
 import rehypeToRemark from 'rehype-remark';
-import registry from 'netlify-cms-core';
 
 import remarkToRehypeShortcodes from './remarkRehypeShortcodes';
 import rehypePaperEmoji from './rehypePaperEmoji';
@@ -60,24 +59,24 @@ import { getEditorComponents } from '../MarkdownControl';
 /**
  * Deserialize a Markdown string to an MDAST.
  */
-export function markdownToRemark(markdown) {
+export function markdownToRemark(markdown, remarkPlugins) {
   const processor = unified()
     .use(markdownToRemarkPlugin, { fences: true, commonmark: true })
     .use(markdownToRemarkRemoveTokenizers, { inlineTokenizers: ['url'] })
     .use(remarkParseShortcodes, { plugins: getEditorComponents() })
     .use(remarkAllowHtmlEntities)
     .use(remarkSquashReferences)
-    .use(registry.getRemarkPlugins());
+    .use(remarkPlugins);
 
   /**
    * Parse the Markdown string input to an MDAST.
    */
-  const parsed = processor().parse(markdown);
+  const parsed = processor.parse(markdown);
 
   /**
    * Further transform the MDAST with plugins.
    */
-  const result = processor().runSync(parsed);
+  const result = processor.runSync(parsed);
 
   return result;
 }
@@ -95,7 +94,7 @@ function markdownToRemarkRemoveTokenizers({ inlineTokenizers }) {
 /**
  * Serialize an MDAST to a Markdown string.
  */
-export function remarkToMarkdown(obj) {
+export function remarkToMarkdown(obj, remarkPlugins) {
   /**
    * Rewrite the remark-stringify text visitor to simply return the text value,
    * without encoding or escaping any characters. This means we're completely
@@ -134,17 +133,17 @@ export function remarkToMarkdown(obj) {
     .use(remarkToMarkdownPlugin)
     .use(remarkAllowAllText)
     .use(createRemarkShortcodeStringifier({ plugins: getEditorComponents() }))
-    .use(registry.getRemarkPlugins());
+    .use(remarkPlugins);
 
   /**
    * Transform the MDAST with plugins.
    */
-  const processedMdast = processor().runSync(mdast);
+  const processedMdast = processor.runSync(mdast);
 
   /**
    * Serialize the MDAST to markdown.
    */
-  const markdown = processor().stringify(processedMdast).replace(/\r?/g, '');
+  const markdown = processor.stringify(processedMdast).replace(/\r?/g, '');
 
   /**
    * Return markdown with trailing whitespace removed.
@@ -200,8 +199,8 @@ export function htmlToSlate(html) {
 /**
  * Convert Markdown to Slate's Raw AST.
  */
-export function markdownToSlate(markdown, { voidCodeBlock } = {}) {
-  const mdast = markdownToRemark(markdown);
+export function markdownToSlate(markdown, { voidCodeBlock } = {}, remarkPlugins) {
+  const mdast = markdownToRemark(markdown, remarkPlugins);
 
   const slateRaw = unified()
     .use(remarkWrapHtml)
@@ -220,8 +219,8 @@ export function markdownToSlate(markdown, { voidCodeBlock } = {}) {
  * MDAST. The conversion is manual because Unified can only operate on Unist
  * trees.
  */
-export function slateToMarkdown(raw, { voidCodeBlock } = {}) {
+export function slateToMarkdown(raw, { voidCodeBlock } = {}, remarkPlugins) {
   const mdast = slateToRemark(raw, { voidCodeBlock });
-  const markdown = remarkToMarkdown(mdast);
+  const markdown = remarkToMarkdown(mdast, remarkPlugins);
   return markdown;
 }

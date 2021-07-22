@@ -13,7 +13,7 @@ describe('registered remark plugins', () => {
       visit(tree, 'link', function onLink(node) {
         node.url = 'https://netlify.com';
       });
-    }
+    };
   }
 
   it('should use remark transformer plugins when converting mdast to markdown', () => {
@@ -183,9 +183,11 @@ Object {
 
   it('should use remark serializer plugins when converting mdast to markdown', () => {
     function withEscapedLessThanChar() {
-      this.Compiler.prototype.visitors.text = node => {
-        return node.value.replace(/</g, '&lt;');
-      };
+      if (this.Compiler) {
+        this.Compiler.prototype.visitors.text = node => {
+          return node.value.replace(/</g, '&lt;');
+        };
+      }
     }
 
     registry.registerRemarkPlugin(withEscapedLessThanChar);
