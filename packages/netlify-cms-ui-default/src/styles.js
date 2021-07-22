@@ -241,6 +241,7 @@ const buttons = {
   disabled: css`
     background-color: ${colorsRaw.grayLight};
     color: ${colorsRaw.gray};
+    cursor: default;
   `,
 };
 

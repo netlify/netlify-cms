@@ -164,6 +164,7 @@ exports[`GitGatewayAuthenticationPage should render with no identity error 1`] =
 .emotion-2[disabled] {
   background-color: #eff0f4;
   color: #798291;
+  cursor: default;
 }
 
 .emotion-5 {
@@ -255,6 +256,7 @@ exports[`GitGatewayAuthenticationPage should render with no identity error 1`] =
 .emotion-2[disabled] {
   background-color: #eff0f4;
   color: #798291;
+  cursor: default;
 }
 
 .emotion-5 {
