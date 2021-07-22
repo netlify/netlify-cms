@@ -7,7 +7,12 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { lengths } from 'netlify-cms-ui-default';
 import { connect } from 'react-redux';
 
-import { resolveWidget, getPreviewTemplate, getPreviewStyles } from '../../../lib/registry';
+import registry, {
+  resolveWidget,
+  getPreviewTemplate,
+  getPreviewStyles,
+  getRemarkPlugins,
+} from '../../../lib/registry';
 import { ErrorBoundary } from '../../UI';
 import { selectTemplateName, selectInferedField, selectField } from '../../../reducers/collections';
 import { boundGetAsset } from '../../../actions/media';
@@ -45,6 +50,7 @@ export class PreviewPane extends React.Component {
         entry={entry}
         fieldsMetaData={metadata}
         resolveWidget={resolveWidget}
+        getRemarkPlugins={getRemarkPlugins}
       />
     );
   };

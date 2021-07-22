@@ -154,8 +154,8 @@ export function remarkToMarkdown(obj, remarkPlugins) {
 /**
  * Convert Markdown to HTML.
  */
-export function markdownToHtml(markdown, { getAsset, resolveWidget } = {}) {
-  const mdast = markdownToRemark(markdown);
+export function markdownToHtml(markdown, { getAsset, resolveWidget } = {}, remarkPlugins) {
+  const mdast = markdownToRemark(markdown, remarkPlugins);
 
   const hast = unified()
     .use(remarkToRehypeShortcodes, { plugins: getEditorComponents(), getAsset, resolveWidget })
