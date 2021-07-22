@@ -85,6 +85,7 @@ const colors = {
 
 const lengths = {
   topBarHeight: '56px',
+  topBarLogoHeight: '45px',
   inputPadding: '16px 20px',
   borderRadius: '5px',
   richTextEditorMinHeight: '300px',

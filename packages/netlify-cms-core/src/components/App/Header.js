@@ -114,6 +114,10 @@ const AppHeaderNavList = styled.ul`
   list-style: none;
 `;
 
+const Logo = styled.img`
+  height: ${lengths.topBarLogoHeight};
+`;
+
 class Header extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
@@ -123,6 +127,7 @@ class Header extends React.Component {
     openMediaLibrary: PropTypes.func.isRequired,
     hasWorkflow: PropTypes.bool.isRequired,
     displayUrl: PropTypes.string,
+    logoUrl: PropTypes.string,
     isTestRepo: PropTypes.bool,
     t: PropTypes.func.isRequired,
     checkBackendStatus: PropTypes.func.isRequired,
@@ -155,6 +160,7 @@ class Header extends React.Component {
       openMediaLibrary,
       hasWorkflow,
       displayUrl,
+      logoUrl,
       isTestRepo,
       t,
       showMediaButton,
@@ -216,6 +222,7 @@ class Header extends React.Component {
                 ))}
               </Dropdown>
             )}
+            {logoUrl ? <Logo src={logoUrl} alt="logo" /> : ''}
             <SettingsDropdown
               displayUrl={displayUrl}
               isTestRepo={isTestRepo}
