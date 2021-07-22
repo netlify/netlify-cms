@@ -44,7 +44,7 @@ describe('registered remark plugins', () => {
             {
               type: 'link',
               title: null,
-              url: 'https://netlify.com',
+              url: 'https://this-value-should-be-replaced.com',
               children: [
                 {
                   type: 'text',
