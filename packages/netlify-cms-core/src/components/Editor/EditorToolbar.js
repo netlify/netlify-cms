@@ -547,7 +547,6 @@ export class EditorToolbar extends React.Component {
 
     const canCreate = collection.get('create');
     if (!isNewEntry && !hasChanged) {
-      console.log('render VL');
       return this.renderExistingEntrySimplePublishControls({ canCreate });
     }
     return this.renderNewEntrySimplePublishControls({ canCreate });
