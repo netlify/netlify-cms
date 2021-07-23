@@ -239,8 +239,8 @@ function selectDropdownItem(label, item) {
   cy.get('@dropDownButton')
     .parent()
     .within(() => {
-      cy.get('@dropDownButton').click();
-      cy.contains('[role="menuitem"] span', item).click();
+      cy.get('@dropDownButton').click({force: true});
+      cy.contains('[role="menuitem"] span', item).click({force: true});
     });
 }
 
